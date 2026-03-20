@@ -1,0 +1,19 @@
+Projekt DArtscorerr psvita
+Nawigacja dpad góra/dół
+Potwierdzenie x
+Wybór ustawień dpad lewo/prawo
+
+Menu z wyborem opcji gry
+- Punkty
+- Sety
+- Legi
+- Check-out
+- Check-in
+- Graj
+
+Po wciśnieciu graj
+- Liczba graczy (1-4) (Każdy określany jest numerem i kolorem)
+
+W trakcie gry lista z wyborem możliwych pól. (0-20 oraz 25)
+Nawigacja po liście dpad góra/dół
+Potwierdzenie x i potem dpad lewo/prawo na S/D/T (Kolejne potwierdzenie)

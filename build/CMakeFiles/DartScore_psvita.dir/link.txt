@@ -1,0 +1,1 @@
+/usr/local/vitasdk/bin/arm-vita-eabi-gcc  -Wl,-q -std=gnu11 -Wl,-z,nocopyreloc CMakeFiles/DartScore_psvita.dir/src/main.c.obj CMakeFiles/DartScore_psvita.dir/src/debugScreen.c.obj -o DartScore_psvita  -lSceDisplay_stub -lSceCtrl_stub 

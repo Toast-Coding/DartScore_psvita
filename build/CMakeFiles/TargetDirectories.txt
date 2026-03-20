@@ -1,0 +1,6 @@
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/DartScore_psvita.dir
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/DartScore_psvita-velf.dir
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/DartScore_psvita.self-self.dir
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/DartScore_psvita.vpk-vpk.dir
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/edit_cache.dir
+/home/franek-plecha/CLionProjects/DartScore_psvita/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,7 @@
+# Hashes of file build rules.
+1994f393c4f5347205a8a26517eedcca CMakeFiles/DartScore_psvita-velf
+1a3b7a2e38a85a0c5b658bb399920413 CMakeFiles/DartScore_psvita.self-self
+08877b4fb7b97f3415a746ae08d33c80 CMakeFiles/DartScore_psvita.vpk-vpk
+b9f626f5d163602fb2c0397aec33d4f4 DartScore_psvita.self.out
+dffe2832481251bb53fcf80fecac4aba DartScore_psvita.vpk.out
+967ec3803ab851b52a2167924f92ceea DartScore_psvita.vpk_param.sfo
