@@ -1,21 +1,32 @@
 #include <stdio.h>
 #include <psp2/kernel/processmgr.h>
 #include <psp2/ctrl.h>
+//#include <psp2/>
 
 #include "debugScreen.h"
-#define MENU_ITEMS 3
+
 typedef struct {
     const char* name;
-    int value;
-    int min;
-    int max;
+    const char** options;
+    int options_count;
+    int selected;
 } MenuItem;
 
+const char* points[] = {"101", "201", "301", "401", "501"};
+const char* sets[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+const char* legs[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+const char* check_in[] = {"Straight in", "Double in", "Master in"};
+const char* check_out[] = {"Straight out", "Double out", "Master out"};
+
 MenuItem menu[MENU_ITEMS] = {
-    {"Volume", 5, 0, 10},
-    {"Brightness", 3, 0, 5},
-    {"Difficulty", 1, 0, 2}
+    {"Points", points, 5, 0},
+    {"Sets", sets, 10, 0},
+    {"Legs", legs, 10, 0},
+    {"Check in", check_in, 3, 0}
+    {"Check out", check_out, 3, 0}
 };
+
+#define MENU_ITEMS (sizeof(menu)/sizeof(MenuItem))
 
 int ScoreCounter(int shot_score, int total_score) {
     return shot_score + total_score;
@@ -26,21 +37,18 @@ int shot() {
 void main_menu() {
     psvDebugScreenInit();
     sceCtrlSetSamplingMode(SCE_CTRL_MODE_DIGITAL);
+
     int selected = 0;
     int editing = 0;
 
-    SceCtrlData pad, oldpad;
-    oldpad.buttons = 0;
+    SceCtrlData pad, oldpad = {0};
 
     while (1) {
         sceCtrlPeekBufferPositive(0, &pad, 1);
-
         int pressed = pad.buttons & ~oldpad.buttons;
+        MenuItem* item = &menu[selected];
 
-        // ------------------------
-        // INPUT
-        // ------------------------
-
+        //Input for menu
         if (!editing) {
             if (pressed & SCE_CTRL_DOWN) {
                 selected = (selected + 1) % MENU_ITEMS;
@@ -54,12 +62,11 @@ void main_menu() {
             }
         } else {
             if (pressed & SCE_CTRL_RIGHT) {
-                if (menu[selected].value < menu[selected].max)
-                    menu[selected].value++;
+                item->selected = (item->selected +1) % item->options_count;
             }
             if (pressed & SCE_CTRL_LEFT) {
-                if (menu[selected].value > menu[selected].min)
-                    menu[selected].value--;
+                item->selected--;
+                if (item->selected < 0) item->selected = item->options_count - 1;
             }
             if (pressed & SCE_CTRL_CROSS) {
                 editing = 0;
@@ -68,9 +75,7 @@ void main_menu() {
 
         oldpad = pad;
 
-        // ------------------------
-        // RENDER
-        // ------------------------
+        //Rednering menu
 
         psvDebugScreenClear(0x00000000); // clear screen with black
 
@@ -86,7 +91,7 @@ void main_menu() {
                 psvDebugScreenSetFgColor(0xffffffff); // white
             }
 
-            psvDebugScreenPrintf("%s : %d\n", menu[i].name, menu[i].value);
+            psvDebugScreenPrintf("%s : %s\n", menu[i].name, menu[i].options[menu[i].selected]);
         }
 
         psvDebugScreenSetFgColor(0xffffffff);
